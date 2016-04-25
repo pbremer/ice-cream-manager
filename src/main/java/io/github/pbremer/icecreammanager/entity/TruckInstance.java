@@ -58,15 +58,15 @@ public class TruckInstance extends InstanceEntitySupport {
     private List<InventoryLoss> inventoryLoss;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "truckInstance")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-            property = "routeInstanceId")
-    @JsonIdentityReference(alwaysAsId = true)
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+//            property = "routeInstanceId")
+//    @JsonIdentityReference(alwaysAsId = true)
     private RouteInstance routeInstance;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "truckInstance")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-            property = "dirverInstanceId")
-    @JsonIdentityReference(alwaysAsId = true)
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+//            property = "driverInstanceId")
+//    @JsonIdentityReference(alwaysAsId = true)
     private DriverInstance driverInstance;
 
     @Column(name = "HOURS_OUT")
