@@ -43,21 +43,15 @@ public class CityConverter implements Converter<CityFlatFileContainer, City> {
 	    Hibernate.initialize(city.getZones());
 	} else {
 	    city = new City();
+	    city.setZones(new ArrayList<Zone>());
 	}
 	city.setActive(true);
 	city.setCityName(source.getCityName());
-	List<Zone> zoneList = new ArrayList<Zone>();
 	Zone zone = new Zone();
 	zone.setActive(true);
 	zone.setZoneName(source.getCityLabel());
 	zone.setCity(city);
-	zoneList.add(zone);
-	if (city.getZones() == null || city.getZones().isEmpty()) {
-	    city.setZones(zoneList);
-	} else {
-	    zoneList.addAll(city.getZones());
-	    city.setZones(zoneList);
-	}
+	city.getZones().add(zone);
 	return city;
 	// }
 
@@ -71,7 +65,6 @@ public class CityConverter implements Converter<CityFlatFileContainer, City> {
 	    zone.setActive(false);
 	}
 	zoneRepo.save(zones);
-
     }
 
 }
